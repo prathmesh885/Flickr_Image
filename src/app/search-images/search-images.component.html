@@ -1,0 +1,84 @@
+<div class="container" *ngIf=img>
+  <h1 class="text-center">Flickr</h1>
+  <!-- <h1>Check: {{check}}</h1>
+  <h1>Rating: {{rating}}</h1>
+  <h1>ProvedBy: {{providedBy}}</h1> -->
+  
+  <!-- <div class="form-group">
+    <input type="search" class="form-control" (keyup)="search($event)" placeholder="Search images">
+  </div> -->
+
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-4 p-3">
+      <!-- href="{{image.url}}_b.jpg" -->
+      <h1 class="text-center">{{nowImage.title}}</h1>
+
+      <div class="card">
+        <img src="{{nowImage.url}}_m.jpg" title="{{nowImage.title}}">
+      </div>
+    </div>
+
+
+    <!-- Ith review cha code tak     -->
+    <div class="col-6" style="margin-left: 10%;">
+      <h3>Select your rating : </h3>
+      <input type="radio" required name='gender' value=1 [(ngModel)]="rating">1
+      <input type="radio" required name='gender' value=2 [(ngModel)]="rating">2
+      <input type="radio" required name='gender' value=3 [(ngModel)]="rating">3
+      <input type="radio" required name='gender' value=4 [(ngModel)]="rating">4
+      <input type="radio" required name='gender' value=5 [(ngModel)]="rating">5
+      <input type="radio" required name='gender' value=6 [(ngModel)]="rating">6
+      <input type="radio" required name='gender' value=7 [(ngModel)]="rating">7
+      <input type="radio" required name='gender' value=8 [(ngModel)]="rating">8
+      <input type="radio" required name='gender' value=9 [(ngModel)]="rating">9
+      <input type="radio" required name='gender' value=10 [(ngModel)]="rating">10
+
+      <h3>Review Provided By </h3>
+      <input [(ngModel)]="providedBy" type="email" class="form-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+
+      <h3>Reason </h3>
+      <input [(ngModel)]="reason" type="email" class="form-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+      <br>
+      <div class="text-center">
+        <button (click)="back()" type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    <br>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<div class="container" *ngIf=code>
+  <h1 class="text-center">Flickr</h1>
+  <h3>Search any Image</h3>
+  <div class="form-group">
+    <input type="search" class="form-control" (keyup)="search($event)" placeholder="Search images">
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 p-3" *ngFor="let image of images">
+
+      <!-- href="{{image.url}}_b.jpg" -->
+      <div class="card">
+        <a (click)="fun(image)">
+          <img src="{{image.url}}_m.jpg" title="{{image.title}}">
+        </a>
+        <h5>{{image.rating}}</h5>
+        <h5>{{image.providedBy}}</h5>
+        <h5>{{image.reason}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+  </div>
+</div>
